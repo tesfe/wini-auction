@@ -6,6 +6,7 @@ app.use(cors());
 
 app.use(express.json());
 //this for all coming data  converts to json
+//this for all coming data  converts to json
 
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/auth"));
