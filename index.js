@@ -1,12 +1,18 @@
+require("dotenv").config();
+
+const mongoose = require("mongoose");
+
 const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
 app.use(cors());
-
+const connectDb = require("./db");
+const PORT = process.env.PORT;
+//this for all coming data  converts to json
 app.use(express.json());
-//this for all coming data  converts to json
-//this for all coming data  converts to json
+//connecting to mongodb
+connectDb();
 
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/auth"));
@@ -14,6 +20,9 @@ app.all("*", (req, res) => {
   res.sendStatus(404);
 });
 
-app.listen(3000, () => {
-  console.log("connected to server");
+mongoose.connection.once("open", () => {
+  console.log("database connected");
+  app.listen(PORT, () => {
+    console.log("connected to server");
+  });
 });
