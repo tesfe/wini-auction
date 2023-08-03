@@ -1,12 +1,14 @@
+const cors = require("cors");
+
 require("dotenv").config();
 
 const mongoose = require("mongoose");
 
 const express = require("express");
 const app = express();
-const path = require("path");
-const cors = require("cors");
 app.use(cors());
+const path = require("path");
+
 const connectDb = require("./db");
 const PORT = process.env.PORT;
 //this for all coming data  converts to json
