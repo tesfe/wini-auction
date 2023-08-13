@@ -1,8 +1,10 @@
-// const fsPromise = require("fs").promises;
+require("dotenv").config();
+const fsPromise = require("fs").promises;
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const dbUser = require("../model/product");
-// const path = require("path");
+const userDb = require("../model/user");
+const path = require("path");
 // const userDB = {
 //   users: require("../model/users.json"),
 //   setUsers: function (data) {
@@ -11,14 +13,15 @@ const dbUser = require("../model/product");
 // };
 const handleNewuser = async (req, res) => {
   const { user, pwd } = req.body;
-  // if (!user || !pwd) {
-  //   return res
-  //     .sendStatus(400)
-  //     .json({ message: "enter a valid password and user name" });
-  // }
-  const dublicate = await dbUser.findOne({ userName: user }).exec();
+  if (!user || !pwd) {
+    return res
+      .status(400)
+      .json({ message: "enter a valid password and user name" });
+  }
+  // const dublicate = userDB.users.find((person) => person.userName === user);
+  const dublicate = await userDb.findOne({ userName: user }).exec();
   if (dublicate) {
-    return res.sendStatus(409);
+    return res.status(409).json("conflict");
   }
   try {
     const hashedPwd = await bcrypt.hash(pwd, 10);
@@ -31,9 +34,8 @@ const handleNewuser = async (req, res) => {
     // );
     // res.write(JSON.stringify(userDB.users));
     // res.end();
-
     /*creating a doc data*/
-    const newUser = await dbUser.create({
+    const newUser = await userDb.create({
       userName: user,
       password: hashedPwd,
     });
@@ -41,7 +43,7 @@ const handleNewuser = async (req, res) => {
     console.log(newUser);
     res.json({ message: "suucessful" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "failed to register" });
   }
 };
 module.exports = { handleNewuser };

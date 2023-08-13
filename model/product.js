@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const schemaBlog = new Schema({
-  userName: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+const schemaBlog = new mongoose.Schema({
+  color: [String],
+  company: [String],
+  name: String,
+  prices: Number,
+  url: String,
+  category: [String],
 });
+
+// const YourModel = mongoose.model('YourModel', yourSchema);
+
+// module.exports = YourModel;
 
 // const exPort = mongoose.model("product", schemaBlog);
 // module.exports = exPort;

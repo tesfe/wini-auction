@@ -1,0 +1,61 @@
+.header-bg-color {
+  background-color: rgb(232, 147, 161);
+  height: 5rem;
+  position: fixed;
+  top: 3.5rem;
+}
+.navi-bar {
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+}
+.menu {
+  position: fixed;
+  left: 0;
+  top: 10rem;
+}
+.name-price-tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: lighter;
+  font-style: italic;
+}
+#submit {
+  display: none;
+}
+/* #food {
+  background-color: whitesmoke;
+} */
+.red {
+  background-color: red;
+}
+.white {
+  background-color: white;
+}
+.yellow {
+  background-color: rgb(174, 237, 48);
+}
+.black {
+  background-color: rgb(22, 18, 18);
+}
+.blue {
+  background-color: rgb(55, 0, 255);
+}
+.containerBg-color {
+  background-image: linear-gradient(
+    to left,
+    rgb(108, 108, 226),
+    rgb(12, 190, 210)
+  );
+  margin-bottom: 0.5rem;
+}
+.category,
+.company,
+#prices {
+  background-color: rgba(92, 92, 196, 0.526);
+}
+/* .category:focus {
+  background-color: white;
+} */

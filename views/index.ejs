@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 class="header-bg-color w-100 text-center pt-3">home/products</h1>
+    <!-- <form action="/blabla" method="post" class="bid">
+      <button type="submit" name="auction" class="submit">join auction</button>
+    </form> -->
+    <main class="bg-white row w-100">
+      <section class="d-none d-sm-block col-sm-3 col-md-3 col-lg-2 ms-3 menu">
+        <input
+          type="search"
+          placeholder="search"
+          class="bg-light-subtle border-0 col-12 search" />
+        <label for="#category" class="fw-bold col-12">category</label>
+        <button class="col-12 text-start border-0 mt-1 category" value="all">
+          all
+        </button>
+        <button class="category col-12 text-start border-0 mt-1" value="car">
+          Car
+        </button>
+        <button class="col-12 text-start border-0 mt-1 category" value="pickup">
+          Pickup
+        </button>
+        <button class="col-12 text-start border-0 mt-1 category" value="race">
+          Racing Car
+        </button>
+        <button class="col-12 text-start border-0 mt-1 category" value="suv">
+          Suv
+        </button>
+
+        <label for="option" class="fw-bold"> company</label>
+        <select
+          class="form-select w-50 company"
+          id="option"
+          aria-label="Default select example">
+          <option selected class="company" value="all">all</option>
+          <option class="company" value="ford">Ford</option>
+          <option class="company" value="dodge">Dodge</option>
+          <option class="company" value="bmw">BMW</option>
+          <option class="company" value="mercedes-benz">Mercedes-Benz</option>
+        </select>
+        <label class="fw-bold col-12">colors</label>
+        <button value="all" class="border-0 p-2 border-0 colors">All</button>
+        <button
+          value="red"
+          class="rounded-circle p-2 border-0 colors red"></button>
+        <button
+          value="white"
+          class="rounded-circle p-2 border-0 white colors"></button>
+        <button
+          value="blue"
+          class="rounded-circle p-2 border-0 blue colors"></button>
+        <button
+          value="yellow"
+          class="rounded-circle p-2 border-0 yellow colors"></button>
+        <button
+          value="black"
+          class="rounded-circle p-2 border-0 black colors"></button>
+        <label for="prices" class="fw-bold col-12">prices</label>
+        <label for="prices" class="col-12 rangeValue"> </label>
+        <input type="range" id="prices" min="100" max="100000" value="100000" />
+      </section>
+      <div class="row justify-content-end pt-5 mt-5 w-100">
+        <section
+          class="col-12 col-sm-8 me-0 pe-0 col-md-8 col-lg-9 min-vh-100 pt-5 mt-5">
+          <div class="row item">
+            <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span class="name">name</span>
+                <span class="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+              <img
+                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
+                src="pic_5.jpg"
+                alt="" />
+              <div class="name-price-tag">
+                <span id="name">name</span>
+                <span id="price">price</span>
+              </div>
+            </div> -->
+          </div>
+        </section>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
