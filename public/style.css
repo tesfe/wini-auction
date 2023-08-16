@@ -1,3 +1,69 @@
+/* * {
+  background-image: linear-gradient(
+    to left,
+    rgb(17, 49, 230),
+    rgb(0, 166, 255)
+  );
+} */
+body {
+  background-image: linear-gradient(
+    to left,
+    rgb(17, 49, 230),
+    rgb(0, 166, 255)
+  );
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.logger-header {
+  margin-top: 1rem;
+}
+
+.logger-img {
+  box-shadow: 10px 10px 10px rgb(32, 33, 33);
+}
+.logger-h {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 4rem;
+  color: yellowgreen;
+  text-shadow: 10px 10px 10px rgb(32, 33, 33);
+}
+.logger-form,
+.logger-form input,
+.register,
+.register input {
+  color: rgb(18, 4, 68);
+  border-bottom: 0;
+  border-top: 0;
+}
+.register {
+  display: flex;
+  padding: 0;
+  display: none;
+}
+.logger-form button,
+.register button {
+  color: rgb(13, 9, 56);
+  border-bottom: 0;
+  border-top: 0;
+  border-radius: 30%;
+}
+/* .form-input-user,
+.form-input-pwd {
+  display: none;
+} */
+/* .logger-main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 2rem;
+} */
+.logger-main img {
+  margin: 2rem;
+}
+
 .header-bg-color {
   background-color: rgb(232, 147, 161);
   height: 5rem;

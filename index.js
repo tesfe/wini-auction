@@ -13,16 +13,19 @@ const cookieParse = require("cookie-parser");
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(cookieParse());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 //connecting to mongodb
 connectDb();
 
 const mongoose = require("mongoose");
+app.use("/", require("./routes/logger"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/auth"));
 app.use("/refresh", require("./routes/refreshin"));
 app.use("/logout", require("./routes/logout"));
-//app.use(jwtAuth);
+app.use("/auction", require("./routes/auctionRoute"));
+app.use(jwtAuth);
 app.use("/products", require("./routes/mainPage"));
 app.use("/product", require("./routes/productRoute"));
 app.all("*", (req, res) => {

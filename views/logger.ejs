@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="loggerScript.js"></script>
+  </head>
+  <body>
+    <div class="logger-header">
+      <form
+        action="/login"
+        method="post"
+        class="logger-form col-5 col-sm-5 col-md-5 col-lg-6 p-0 mx-0 my-2">
+        <label for="user" style="white-space: nowrap" class="m-2"
+          >Name:&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" name="user" id="user" required
+        /></label>
+        <label style="white-space: nowrap" for="pwd" class="m-2"
+          >Password:<input type="password" name="pwd" id="pwd" required
+        /></label>
+        <button type="submit">Sign In</button>
+      </form>
+
+      <form action="/register" method="post" class="register">
+        <label class="form-input-user" for="userId"
+          >Name: <input type="text" name="user" id="userId" required
+        /></label>
+        <label style="white-space: nowrap" class="form-input-pwd" for="paswd"
+          >Password:<input type="password" name="pwd" id="paswd" required
+        /></label>
+        <button class="form-submit" type="submit">Register</button>
+      </form>
+      <div style="display: inline" class="col-1">
+        <button class="submit" type="button">Register</button>
+      </div>
+
+      <% if (message) { %>
+      <p><%=message %></p>
+      <% } %>
+    </div>
+    <h1 class="logger-h">WINI AUCTION</h1>
+    <!-- <main class="col-12 col-md-12 col-lg-12"> -->
+    <section
+      class="logger-main row w-100 align-item-center justify-content-center">
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/ford-race.jpg"
+        alt="ford-race-car" />
+
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/benz-black.jpg"
+        alt="ford-race-car" />
+
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/dodge-challenger-suv.jpg"
+        alt="ford-race-car" />
+
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/dodge-durango-white.jpg"
+        alt="ford-race-car" />
+
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/dodge-interpid.jpg"
+        alt="ford-race-car" />
+
+      <img
+        class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
+        src="./img/bmw-blue.jpg"
+        alt="ford-race-car" />
+    </section>
+    <!-- </main> -->
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"></script>
+  </body>
+</html>

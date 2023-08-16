@@ -1,3 +1,5 @@
+//script for products page
+
 const fetchBtn = document.querySelectorAll(".category");
 const price = document.querySelector("#prices");
 const company = document.querySelectorAll(".company");
@@ -69,7 +71,7 @@ function createItem(data) {
   bidBtn.classList.add("submit", "w-100", "m-1", "rounded-pill");
   bidBtn.textContent = "Join Auction";
   bidBtn.value = data.item.name;
-
+  bidBtn.name = "name";
   // const clonedForm = bid.cloneNode(true);
   // submit.style.display = "block";
   // container.appendChild(clonedForm);

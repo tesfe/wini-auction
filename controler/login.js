@@ -1,5 +1,6 @@
 require("dotenv").config();
 const userDb = require("../model/user");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const mongoose = require("mongoose");
@@ -10,7 +11,6 @@ const mongoose = require("mongoose");
 //     this.users = data;
 //   },
 // };
-const jwt = require("jsonwebtoken");
 
 const loginUser = async (req, res) => {
   const { user, pwd } = req.body;
@@ -40,6 +40,7 @@ const loginUser = async (req, res) => {
       console.log(result);
       //sending the refresh token and the acess token
       //we can send the acess token either in the header or as payload
+      //res.header( "" )
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
         //inproduction should be included
@@ -48,7 +49,7 @@ const loginUser = async (req, res) => {
         // maxAge: 24 * 60 * 60 * 1000,
       });
       //sending the acess token in the payload
-      res.json({ accessToken });
+      res.render("index");
     } else res.status(401).json({ message: "this is the problem" });
   } catch (error) {
     console.log(error);

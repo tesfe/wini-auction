@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const product = require("../model/product");
 
 const getProduct = async (req, res) => {
-  const { color, company, category, price } = req.query;
+  const { color = "all", company = "all", category = "all", price } = req.query;
   const col = color;
   const com = company;
   const cate = category;
@@ -56,7 +56,7 @@ const getProduct = async (req, res) => {
     }
     const perfect = resulto.filter((match) => match.matchCount === 4);
     if (perfect.length) return res.status(200).json(perfect);
-    res.status(404).json(resulto);
+    res.status(201).json(resulto);
   } catch (error) {
     console.error(error);
   }
