@@ -10,15 +10,19 @@ const joinAuction = async (req, res) => {
     const userName = req?.user;
     const withName = auctionItems.filter((item) => item.userName === userName);
     if (withName) {
-      const user = true;
-      const dataB = withName.map((element) => {
-        element = { ...element, user };
-        return element;
+      //  const user = true;
+      // const dataB = withName.map((element) => {
+      //   element.user = true;
+      //   return element;
+      // });
+      const dataB = withName.forEach((obj) => {
+        obj.user = true;
       });
+      console.log(dataB, withName);
       const otherData = auctionItems.filter(
         (item) => item.userName !== userName
       );
-      auctionItems = [...otherData, ...dataB];
+      auctionItems = [...otherData, ...withName];
     }
     const itemByName = {};
     auctionItems.map((item) => {
@@ -36,7 +40,7 @@ const joinAuction = async (req, res) => {
     }
 
     const data = Object.values(itemByName).flat();
-
+    //console.log(data);
     res.render("auction", { data, message: undefined });
   } catch (error) {
     console.log({ error });

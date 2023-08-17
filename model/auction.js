@@ -6,7 +6,7 @@ const schemaUse = new mongoose.Schema({
 
   url: { type: String },
   prices: { type: Number },
-  bidOpen: { type: Boolean, default: false },
+  bidOpen: { type: Boolean },
   bid: { type: Number },
   userName: { type: String },
 });
