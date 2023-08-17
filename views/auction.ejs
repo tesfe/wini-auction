@@ -12,45 +12,55 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form action="/auction" method="post">
-      <label for="user"
-        >Enter Name/Id: <input id="user" type="text" name="userName" required
-      /></label>
-      <label for="model"
-        >Enter Name/Id: <input id="model" type="text" name="model" required
-      /></label>
+    <% if (message) { %>
+    <p><%=message%></p>
 
-      <label for="bidCall" style="white-space: nowrap"
-        >Enter your Bid call:
-        <input id="bidCall" type="number" name="bid" required
-      /></label>
-
-      <button type="submit">submit</button>
-    </form>
+    <% } %>
     <div class="row m-1">
       <% for( const item of data ) { %>
 
       <div class="col-lg-12">
         <div class="bid-item row m-2">
+          <% if (item.url) { %>
           <img
             class="col-10 col-sm-10 col-md-7 col-lg-2"
             src="<%=item.url%>"
             alt="car-pic" />
+
+          <% } %>
+
           <div class="col-10 col-sm-10 col-md-7 col-lg-10 pe-0 me-0">
             <div class="row">
-              <p class="col-lg-3" id="detail">Model Name <%=item.name%></p>
+              <p class="col-lg-3" id="detail">Model Name:<%=item.name%></p>
 
               <p class="col-lg-4" id="detail">
                 Bidder Name/Id <%=item.userName%>
               </p>
-
-              <p class="col-lg-3" id="detail">bid called <%=item.bid%></p>
-
               <% if (item.prices) { %>
               <p>BId open at <%=item.prices%></p>
-              <% } %> <% if (bidOn) { %>
-              <p>Status:ACtive</p>
-              <% } %> <% if (user) { %>
+              <% } %> <% if (item.bidOpen) { %>
+              <form action="/join" method="post">
+                <label for="user">
+                  User Name:
+                  <input id="user" type="text" name="userName" required
+                /></label>
+
+                <input
+                  id="model"
+                  type="hidden"
+                  value="<%=item.name%>"
+                  name="model"
+                  required />
+
+                <label for="bidCall" style="white-space: nowrap"
+                  >Your Bid call:
+                  <input id="bidCall" type="number" name="bid" required
+                /></label>
+
+                <button type="submit">Join Auction</button>
+              </form>
+              <% } %> <% if (item.user) { %>
+              <p class="col-lg-3" id="detail">bid called <%=item.bid%></p>
               <form action="/update" method="post">
                 <input type="hidden" value="<%=item.name%>" name="model" />
                 <input

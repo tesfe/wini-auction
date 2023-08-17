@@ -64,7 +64,7 @@ function createItem(data) {
     "containerBg-color"
   );
 
-  form.action = "/blabla";
+  form.action = "/auction";
   form.method = "post";
   form.classList.add("bid");
   bidBtn.type = "submit";
