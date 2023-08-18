@@ -9,6 +9,7 @@ const path = require("path");
 const jwtAuth = require("./middleware/jwtauth");
 const connectDb = require("./db");
 const cookieParse = require("cookie-parser");
+const { creatAuction, deletUpdate } = require("./controler/crudAuction");
 //this for all coming data  converts to json
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -28,7 +29,9 @@ app.use("/logout", require("./routes/logout"));
 app.use(jwtAuth);
 app.use("/products", require("./routes/mainPage"));
 app.use("/auction", require("./routes/auctionRoute"));
-app.post("/join", require("./controler/crudAuction"));
+app.post("/join", creatAuction);
+app.post("/updateDelet", deletUpdate);
+
 app.use("/product", require("./routes/productRoute"));
 app.all("*", (req, res) => {
   res.sendStatus(404);

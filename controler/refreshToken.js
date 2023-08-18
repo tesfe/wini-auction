@@ -1,7 +1,7 @@
 const User = require("../model/user");
 
 const jwt = require("jsonwebtoken");
-
+//this code has no use on this project so far just put for farther use incase i decide to use access token with headers
 const refreshToken = async (req, res) => {
   const cookies = req.cookies;
   console.log(cookies);

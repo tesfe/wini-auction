@@ -46,11 +46,10 @@
                 /></label>
 
                 <input
-                  id="model"
+                  id="mode"
                   type="hidden"
                   value="<%=item.name%>"
-                  name="model"
-                  required />
+                  name="model" />
 
                 <label for="bidCall" style="white-space: nowrap"
                   >Your Bid call:
@@ -59,9 +58,11 @@
 
                 <button type="submit">Join Auction</button>
               </form>
-              <% } %> <% if (item.user) { %>
+              <% } else if (!item.user) { %>
+              <p class="col-lg-2">bid CLOSED</p>
+              <% } %><% if (item.user) { %>
               <p class="col-lg-3" id="detail">bid called <%=item.bid%></p>
-              <form action="/update" method="post">
+              <form action="/updateDelet" method="post">
                 <input type="hidden" value="<%=item.name%>" name="model" />
                 <input
                   type="hidden"
@@ -71,7 +72,7 @@
                 <button value="update" name="update" type="submit">
                   CHANGE BID
                 </button>
-                <button value="delete" name="delete" type="submit">
+                <button value="delete" name="delet" type="submit">
                   DELETE BID
                 </button>
               </form>

@@ -7,7 +7,7 @@ const getProduct = async (req, res) => {
   const com = company;
   const cate = category;
   const cost = parseInt(price, 10);
-  console.log(typeof col, typeof com, typeof cate, typeof cost);
+  // console.log(typeof col, typeof com, typeof cate, typeof cost);
   //   try {
   //     const result = await product
   //       .find({
