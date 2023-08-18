@@ -65,10 +65,12 @@ body {
 }
 
 .header-bg-color {
-  background-color: rgb(232, 147, 161);
+  background-color: rgb(147, 192, 232);
   height: 5rem;
   position: fixed;
   top: 3.5rem;
+  color: yellowgreen;
+  text-shadow: 10px 10px 10px rgb(32, 33, 33);
 }
 .navi-bar {
   position: fixed;
