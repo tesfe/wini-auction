@@ -2,6 +2,7 @@ require("dotenv").config();
 const userDb = require("../model/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { userValidator } = require("../validators/userValidator");
 
 const mongoose = require("mongoose");
 
@@ -16,8 +17,13 @@ const loginUser = async (req, res) => {
   const { user, pwd } = req.body;
   try {
     if (!user || !pwd)
-      return res.status(401).json({ error: "username or password required" });
+      return res.render("logger", { message: "username or password required" });
     console.log(user, pwd);
+    const { error } = userValidator({ user, pwd });
+    if (error)
+      return res.render("logger", {
+        message: "enter valid username and password",
+      });
     const foundUser = await userDb.findOne({ userName: user }).exec();
     if (!foundUser) return res.sendStatus(404); //unathorized
 

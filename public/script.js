@@ -64,14 +64,14 @@ function createItem(data) {
     "containerBg-color"
   );
 
-  form.action = "/auction";
+  form.action = "/auctionItem";
   form.method = "post";
   form.classList.add("bid");
   bidBtn.type = "submit";
   bidBtn.classList.add("submit", "w-100", "m-1", "rounded-pill");
   bidBtn.textContent = "Join Auction";
   bidBtn.value = data.item.name;
-  bidBtn.name = "name";
+  bidBtn.name = "model";
   // const clonedForm = bid.cloneNode(true);
   // submit.style.display = "block";
   // container.appendChild(clonedForm);

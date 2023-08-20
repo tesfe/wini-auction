@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userDb = require("../model/user");
 const path = require("path");
+const { userValidator } = require("../validators/userValidator");
+
 // const userDB = {
 //   users: require("../model/users.json"),
 //   setUsers: function (data) {
@@ -18,6 +20,11 @@ const handleNewuser = async (req, res) => {
       .status(400)
       .render("logger", { message: "enter a valid password and user name" });
   }
+  const { error } = userValidator({ user, pwd });
+  if (error)
+    return res.render("logger", {
+      message: "enter valid username and password",
+    });
   // const dublicate = userDB.users.find((person) => person.userName === user);
   const dublicate = await userDb.findOne({ userName: user }).exec();
   if (dublicate) {

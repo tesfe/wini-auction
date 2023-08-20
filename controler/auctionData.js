@@ -2,7 +2,7 @@ const auctionData = require("../model/auction");
 
 const mongoose = require("mongoose");
 
-const joinAuction = async (req, res) => {
+const allAuction = async (req, res) => {
   try {
     let auctionItems = await auctionData.find().exec();
     // const cookies = req.cookies;
@@ -47,6 +47,32 @@ const joinAuction = async (req, res) => {
   }
 };
 
-//const findByModel=
+const ItemByName = async (req, res) => {
+  try {
+    const { model } = req?.body;
+    // console.log(model);
+    let auctionItems = await auctionData.find({ name: model }).exec();
+    const userName = req?.user;
+    // console.log(userName);
+    const withName = auctionItems.find((item) => item.userName === userName);
+    if (withName) {
+      withName.user = true;
+      const otherData = auctionItems.filter(
+        (item) => item.userName !== userName
+      );
+      auctionItems = [...otherData, withName];
+    }
+    //console.log(itemByName, "this  data");
 
-module.exports = joinAuction;
+    const data = auctionItems.sort((a, b) => {
+      a.bid - b.bid;
+    });
+
+    //console.log(data);
+    res.render("auction", { data, message: undefined });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { ItemByName, allAuction };

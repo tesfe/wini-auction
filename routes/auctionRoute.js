@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const auction = require("../controler/auctionData");
+const { ItemByName, allAuction } = require("../controler/auctionData");
 
-router.get("/", auction);
+router.route("/").get(allAuction).post(ItemByName);
+
 module.exports = router;

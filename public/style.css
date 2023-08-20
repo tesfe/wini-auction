@@ -11,6 +11,7 @@ body {
     rgb(17, 49, 230),
     rgb(0, 166, 255)
   );
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -124,6 +125,18 @@ body {
 #prices {
   background-color: rgba(92, 92, 196, 0.526);
 }
-/* .category:focus {
-  background-color: white;
-} */
+.auction-page {
+  margin-top: 10rem;
+}
+.auction-items {
+  background-image: linear-gradient(
+    to left,
+    rgb(124, 140, 235),
+    rgb(125, 178, 207)
+  );
+}
+.user-deco {
+  text-transform: uppercase;
+  background-color: goldenrod;
+  font-weight: bold;
+}

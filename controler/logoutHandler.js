@@ -14,7 +14,8 @@ const logoutHandler = async (req, res) => {
     foundUser.refreshToken = "";
     const result = await foundUser.save();
     res.clearCookie("jwt", { httpOnly: true });
-    res.sendStatus(204);
+    res.status(204);
+    res.redirect("/");
   } catch (error) {
     console.log(error);
   }

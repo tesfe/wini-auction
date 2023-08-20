@@ -9,12 +9,14 @@ const path = require("path");
 const jwtAuth = require("./middleware/jwtauth");
 const connectDb = require("./db");
 const cookieParse = require("cookie-parser");
+const bodyParser = require("body-parser");
 const { creatAuction, deletUpdate } = require("./controler/crudAuction");
+//const { ItemByName } = require("./controler/auctionData");
 //this for all coming data  converts to json
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(cookieParse());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 //connecting to mongodb
 connectDb();
@@ -23,12 +25,13 @@ const mongoose = require("mongoose");
 app.use("/", require("./routes/logger"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/auth"));
-app.use("/refresh", require("./routes/refreshin"));
+//app.use("/refresh", require("./routes/refreshin"));
 app.use("/logout", require("./routes/logout"));
 
 app.use(jwtAuth);
 app.use("/products", require("./routes/mainPage"));
-app.use("/auction", require("./routes/auctionRoute"));
+//app.post("/allAuction", joinAuction);
+app.use("/auctionItem", require("./routes/auctionRoute"));
 app.post("/join", creatAuction);
 app.post("/updateDelet", deletUpdate);
 
