@@ -38,11 +38,11 @@ function createItem(data) {
   const form = document.createElement("form");
   const bidBtn = document.createElement("button");
   spanName.classList.add("name");
-  spanName.innerText = data.item.name;
+  spanName.innerText = data.name;
   spanPrice.classList.add("price");
-  spanPrice.innerText = "$" + data.item.prices;
+  spanPrice.innerText = "$" + data.prices;
   div.classList.add("name-price-tag");
-  const imgScr = data.item.url;
+  const imgScr = data.url;
   console.log(imgScr);
   // img.loading = "eager";
   img.src = imgScr;
@@ -70,7 +70,7 @@ function createItem(data) {
   bidBtn.type = "submit";
   bidBtn.classList.add("submit", "w-100", "m-1", "rounded-pill");
   bidBtn.textContent = "Join Auction";
-  bidBtn.value = data.item.name;
+  bidBtn.value = data.name;
   bidBtn.name = "model";
   // const clonedForm = bid.cloneNode(true);
   // submit.style.display = "block";
@@ -144,10 +144,13 @@ const options = async () => {
     const response = await fetch(url, {
       method: "GET",
     });
-    // if (!response.ok) {
-    //   throw new Error("network is failed");
-    // }
+
+    console.log("the status is ", response.status);
+    if (response.status === 201) {
+      item.innerHTML = "<h5>exact match is not found</h5>";
+    }
     const data = await response.json();
+
     if (data) {
       sessionStorage.clear();
       //  storage.push(data);
