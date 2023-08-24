@@ -61,30 +61,172 @@
     <!-- <form action="/blabla" method="post" class="bid">
       <button type="submit" name="auction" class="submit">join auction</button>
     </form> -->
-    <main class="bg-white row w-100">
-      <section class="d-none d-sm-block col-sm-3 col-md-3 col-lg-2 ms-3 menu">
-        <input
-          type="search"
-          placeholder="search"
-          class="bg-light-subtle border-0 col-12 search"
-          required />
-        <label for="#category" class="fw-bold col-12">category</label>
-        <button class="col-12 text-start border-0 mt-1 category" value="all">
-          all
+    <!-- Example single danger button -->
+    <div class="row menu-sm d-sm-none justify-content-evenly">
+      <div class="btn-group col-2 m-1">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Category
         </button>
-        <button class="category col-12 text-start border-0 mt-1" value="car">
-          Car
-        </button>
-        <button class="col-12 text-start border-0 mt-1 category" value="pickup">
-          Pickup
-        </button>
-        <button class="col-12 text-start border-0 mt-1 category" value="race">
-          Racing Car
-        </button>
-        <button class="col-12 text-start border-0 mt-1 category" value="suv">
-          Suv
-        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <button class="dropdown-item category" type="button" value="all">
+              All
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item category" type="button" value="car">
+              car
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item category" type="button" value="pickup">
+              Pickup
+            </button>
+          </li>
 
+          <li>
+            <button class="dropdown-item category" type="button" value="race">
+              Racing car
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item category" type="button" value="suv">
+              Suv
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3 m-1 me-2">
+        <select
+          class="form-select bg-primary col-12 company text-white"
+          id="option"
+          aria-label="Default select example">
+          <option selected>company</option>
+          <option class="company" value="all">all</option>
+          <option class="company" value="ford">Ford</option>
+          <option class="company" value="dodge">Dodge</option>
+          <option class="company" value="bmw">BMW</option>
+          <option class="company" value="mercedes-benz">Mercedes-Benz</option>
+        </select>
+      </div>
+      <div class="btn-group col-2 m-1">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Colors
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <button class="dropdown-item colors" type="button" value="all">
+              All colors
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item colors red" type="button" value="red">
+              red
+            </button>
+          </li>
+          <li>
+            <button
+              class="dropdown-item colors white"
+              type="button"
+              value="white">
+              white
+            </button>
+          </li>
+
+          <li>
+            <button
+              class="dropdown-item colors blue"
+              type="button"
+              value="blue">
+              blue
+            </button>
+          </li>
+          <li>
+            <button
+              class="dropdown-item colors yellow"
+              type="button"
+              value="yellow">
+              yellowgreen
+            </button>
+          </li>
+          <li>
+            <button
+              class="dropdown-item colors black"
+              type="button"
+              value="black">
+              black
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="btn-group col-2 m-1">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Prices
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <label for="prices" class="col-12 rangeValue p-1"> </label>
+          </li>
+          <li>
+            <input
+              class="dropdown-item p-1"
+              type="range"
+              id="prices"
+              min="100"
+              max="100000"
+              value="100000" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <main class="bg-white row w-100 m-1">
+      <section
+        class="d-none d-sm-block col-12 col-sm-3 col-md-3 col-lg-2 ms-3 pb-5 menu">
+        <form>
+          <input
+            type="text"
+            id="search"
+            placeholder="search"
+            class="bg-light-subtle border-0 col-10 col-lg-8 text-center mt-2"
+            required />
+          <button
+            for="search"
+            class="search-btn rounded-2 bg-primary-subtle border-0">
+            search
+          </button>
+        </form>
+        <label class="fw-bold col-12">category</label>
+        <div>
+          <button class="col-12 text-start border-0 mt-1 category" value="all">
+            all
+          </button>
+          <button class="category col-12 text-start border-0 mt-1" value="car">
+            Car
+          </button>
+          <button
+            class="col-12 text-start border-0 mt-1 category"
+            value="pickup">
+            Pickup
+          </button>
+          <button class="col-12 text-start border-0 mt-1 category" value="race">
+            Racing Car
+          </button>
+          <button class="col-12 text-start border-0 mt-1 category" value="suv">
+            Suv
+          </button>
+        </div>
         <label for="option" class="fw-bold"> company</label>
         <select
           class="form-select w-50 company"
@@ -129,76 +271,6 @@
               <div class="name-price-tag">
                 <span class="name">name</span>
                 <span class="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-              <img
-                class="col-12 col-sm-12 col-md-12 col-lg-12 ps-5 ps-sm-0"
-                src="pic_5.jpg"
-                alt="" />
-              <div class="name-price-tag">
-                <span id="name">name</span>
-                <span id="price">price</span>
               </div>
             </div> -->
           </div>

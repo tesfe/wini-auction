@@ -55,8 +55,11 @@ const loginUser = async (req, res) => {
         // maxAge: 24 * 60 * 60 * 1000,
       });
       //sending the acess token in the payload
-      res.render("index");
-    } else res.status(401).json({ message: "this is the problem" });
+      res.redirect("/products");
+    } else
+      res.render("logger", {
+        message: "enter valid username and password",
+      });
   } catch (error) {
     console.log(error);
   }

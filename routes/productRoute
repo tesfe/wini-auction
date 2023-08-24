@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getProduct } = require("../controler/aproject");
+const { getProduct, search } = require("../controler/aproject");
 
-router.get("/", getProduct);
+router.route("/").get(getProduct).post(search);
 module.exports = router;

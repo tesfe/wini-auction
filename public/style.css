@@ -18,6 +18,9 @@ body {
 }
 .logger-header {
   margin-top: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .logger-img {
@@ -32,24 +35,37 @@ body {
   text-shadow: 10px 10px 10px rgb(32, 33, 33);
 }
 .logger-form,
-.logger-form input,
-.register,
-.register input {
+.logger-form input {
   color: rgb(18, 4, 68);
   border-bottom: 0;
   border-top: 0;
 }
 .register {
   display: flex;
-  padding: 0;
-  display: none;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: end;
+  /* display: none; */
+}
+
+.signUp {
+  background-color: rgba(164, 206, 80, 0.656);
 }
 .logger-form button,
-.register button {
+.sign-up {
   color: rgb(13, 9, 56);
-  border-bottom: 0;
-  border-top: 0;
-  border-radius: 30%;
+  /* border-bottom: 0; */
+  border: none;
+  border-radius: 7px;
+  background-image: linear-gradient(
+    to left,
+    rgba(35, 230, 21, 0.578),
+    rgba(44, 220, 17, 0.942)
+  );
+}
+.register input {
+  border-radius: 7px;
+  border: none;
 }
 /* .form-input-user,
 .form-input-pwd {
@@ -62,7 +78,7 @@ body {
   margin: 2rem;
 } */
 .logger-main img {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .header-bg-color {
@@ -82,7 +98,13 @@ body {
   position: fixed;
   left: 0;
   top: 10rem;
+  background-color: yellowgreen;
 }
+.menu-sm {
+  margin-top: 9rem;
+  position: fixed;
+}
+
 .name-price-tag {
   display: flex;
   flex-direction: row;
@@ -125,6 +147,11 @@ body {
 #prices {
   background-color: rgba(92, 92, 196, 0.526);
 }
+.category:active,
+.category:visited,
+.colors:active {
+  background-color: rgba(207, 94, 7, 0.526);
+}
 .auction-page {
   margin-top: 10rem;
 }
@@ -139,4 +166,28 @@ body {
   text-transform: uppercase;
   background-color: goldenrod;
   font-weight: bold;
+}
+/* 
+@media screen and (min-width: 576px) {
+  .menu {
+    position: fixed;
+    left: 0;
+    top: 10rem;
+    background-color: yellowgreen;
+    margin-top: 0;
+  }
+} */
+h5 {
+  background-color: rgba(227, 109, 109, 0.742);
+  padding: 0.8rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  font-size: small;
+}
+h6 {
+  background-color: rgba(35, 246, 7, 0.594);
+  padding: 0.8rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  font-size: small;
 }

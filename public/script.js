@@ -6,7 +6,9 @@ const company = document.querySelectorAll(".company");
 const colors = document.querySelectorAll(".colors");
 const item = document.querySelector(".item");
 const rangeValue = document.querySelector(".rangeValue");
-const search = document.querySelector(".search");
+const search = document.querySelector("#search");
+const searchBtn = document.querySelector(".search-btn");
+
 const bid = document.querySelector("#bid");
 const submit = document.querySelector("#submit");
 const key = "products";
@@ -19,15 +21,43 @@ menu.category = "all";
 menu.company = "all";
 menu.color = "all";
 menu.price = price.value;
-// // menu.category = "";
-// search.addEventListener("input", async (evt) => {
-//   const query = search.textContent.toLowerCase().trim();
-//   const regx = /^[a-z ]+$/;
-//   if (!query || regx.test(query)) {
-//     return;
-//   }
-//   options();
-// });
+searchBtn.addEventListener("click", async (evt) => {
+  evt.preventDefault();
+  try {
+    const query = search.value;
+    // const query = search.value;
+    console.log(query);
+    if (!query) {
+      return;
+    }
+    item.innerHTML = "";
+    const url = "http://localhost:3000/product";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+    });
+    search.value = "";
+    console.log("the status is ", response.status);
+    if (response.status === 201) {
+      item.innerHTML = "<h5>exact match is not found</h5>";
+    }
+    const data = await response.json();
+
+    if (data) {
+      sessionStorage.clear();
+      //  storage.push(data);
+      // console.log(storage);
+
+      sessionStorage.setItem(key, JSON.stringify(data));
+      //storage = "";
+    }
+
+    data.forEach(createItem);
+  } catch (error) {
+    console.log({ message: "failed to retrieve" });
+  }
+});
 
 function createItem(data) {
   const spanName = document.createElement("span");
@@ -88,7 +118,9 @@ function createItem(data) {
 categoryArray.forEach((button) => {
   button.addEventListener("click", (evt) => {
     // evt.preventDefault();
-    button.style.backgroundColor = "white";
+
+    //button.style.backgroundColor = "white";
+
     const val = evt.target.value;
     console.log(JSON.stringify(val));
     menu.category = val;

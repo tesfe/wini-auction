@@ -29,27 +29,121 @@
         <button type="submit">Sign In</button>
       </form>
 
-      <form action="/register" method="post" class="register">
-        <label class="form-input-user" for="userId"
-          >Name: <input type="text" name="user" id="userId" required
-        /></label>
-        <label style="white-space: nowrap" class="form-input-pwd" for="paswd"
-          >Password:<input type="password" name="pwd" id="paswd" required
-        /></label>
-        <button class="form-submit" type="submit">Register</button>
-      </form>
       <div style="display: inline" class="col-1">
-        <button class="submit" type="button">Register</button>
-      </div>
+        <button
+          type="button"
+          class="btn sign-up m-2 text-nowrap"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-bs-target="#staticBackdrop">
+          Sign up
+        </button>
 
-      <% if (message) { %>
-      <p><%=message %></p>
-      <% } %>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          id="staticBackdrop">
+          <div class="modal-dialog modal-sm modal-lg">
+            <div class="modal-content signUp">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Register
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  action="/register"
+                  method="post"
+                  id="myForm"
+                  class="register m-1">
+                  <div class="col-4 m-2">
+                    <label for="userId"
+                      >Name:&nbsp;<input
+                        type="text"
+                        name="user"
+                        id="userId"
+                        class="col-11 col-md-12"
+                        required
+                    /></label>
+                  </div>
+                  <div class="col-4 m-2">
+                    <label for="paswd"
+                      >Password:<input
+                        type="password"
+                        name="pwd"
+                        id="paswd"
+                        class="col-11 col-md-12"
+                        required
+                    /></label>
+                  </div>
+                  <div class="col-4 m-2">
+                    <label for="userEmail"
+                      >Email:&nbsp;&nbsp;<input
+                        type="email"
+                        name="email"
+                        id="userEmail"
+                        class="col-11 col-md-12"
+                        required
+                    /></label>
+                  </div>
+                  <div class="col-4 m-2">
+                    <label for="paswda"
+                      >Address:&nbsp;&nbsp;<input
+                        type="text"
+                        name="adress"
+                        id="paswda"
+                        class="col-11 col-md-12"
+                        required
+                    /></label>
+                  </div>
+                  <div class="col-4 m-2">
+                    <label for="paswdd"
+                      >Phone:<input
+                        type="tel"
+                        name="phone"
+                        id="paswdd"
+                        class="col-11 col-md-12"
+                        required
+                    /></label>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button type="submit" form="myForm" class="btn yellow">
+                  Sign up
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <% if (message) { %> <% if (message.succes) { %>
+    <h6><%=message.succes%></h6>
+    <% } else { %>
+    <h5><%=message %></h5>
+
+    <% } %> <% } %>
     <h1 class="logger-h">WINI AUCTION</h1>
     <!-- <main class="col-12 col-md-12 col-lg-12"> -->
     <section
-      class="logger-main row w-100 align-item-center justify-content-center">
+      class="logger-main row w-100 align-item-center justify-content-center mx-auto">
       <img
         class="logger-img col-12 col-sm-12 col-md-4 col-lg-3"
         src="./img/ford-race.jpg"

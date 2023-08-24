@@ -51,8 +51,10 @@ const handleNewuser = async (req, res) => {
     console.log("newUser is created");
     console.log(newUser);
     res.render("logger", {
-      message:
-        "thank you have successfully created account ,now login to your account",
+      message: {
+        succes:
+          "thank you have successfully created account ,now login to your account",
+      },
     });
   } catch (error) {
     res.status(500).json({ message: "failed to register" });
