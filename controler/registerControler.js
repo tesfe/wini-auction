@@ -1,20 +1,12 @@
-require("dotenv").config();
-const fsPromise = require("fs").promises;
-
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userDb = require("../model/user");
 const path = require("path");
 const { userValidator } = require("../validators/userValidator");
 
-// const userDB = {
-//   users: require("../model/users.json"),
-//   setUsers: function (data) {
-//     this.users = data;
-//   },
-// };
 const handleNewuser = async (req, res) => {
   const { user, pwd } = req.body;
+  //i am only destructuring to get these values to simplify coding volume
   if (!user || !pwd) {
     return res
       .status(400)
@@ -34,16 +26,7 @@ const handleNewuser = async (req, res) => {
   }
   try {
     const hashedPwd = await bcrypt.hash(pwd, 10);
-    // const newUser = { userName: user, password: hashedPwd };
 
-    // userDB.setUsers([...userDB.users, newUser]);
-    // await fsPromise.writeFile(
-    //   path.join(__dirname, "..", "model", "users.json"),
-    //   JSON.stringify(userDB.users)
-    // );
-    // res.write(JSON.stringify(userDB.users));
-    // res.end();
-    /*creating a doc data*/
     const newUser = await userDb.create({
       userName: user,
       password: hashedPwd,

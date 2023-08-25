@@ -14,6 +14,7 @@ const connectDb = require("./db");
 const cookieParse = require("cookie-parser");
 
 const { creatAuction, deletUpdate } = require("./controler/crudAuction");
+const { getMyAuction } = require("./controler/auctionData");
 
 //this for all coming data  converts to json
 app.use(express.json());
@@ -36,6 +37,7 @@ app.use(jwtAuth);
 app.use("/products", require("./routes/mainPage"));
 
 app.use("/auctionItem", require("./routes/auctionRoute"));
+app.get("/myAuction", getMyAuction);
 app.post("/join", creatAuction);
 app.post("/updateDelet", deletUpdate);
 

@@ -51,6 +51,12 @@ body {
 .signUp {
   background-color: rgba(164, 206, 80, 0.656);
 }
+.fullName {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
 .logger-form button,
 .sign-up {
   color: rgb(13, 9, 56);

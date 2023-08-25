@@ -74,5 +74,56 @@ const ItemByName = async (req, res) => {
     console.log(error);
   }
 };
+const getMyAuction = async (req, res) => {
+  try {
+    const userName = req?.user;
+    const myAuction = await auctionData.find({ userName }).exec();
+    if (!myAuction.length)
+      return res.render("auction", {
+        data: undefined,
+        message: "No current bids found",
+      });
+    myAuction.forEach((item) => {
+      item.user = true;
+    });
+    // ;
 
-module.exports = { ItemByName, allAuction };
+    let bidModelsName = await Promise.all(
+      myAuction.map(async (element) => {
+        const modelBids = await auctionData.find({ name: element.name }).exec();
+        // let modelNames = [];
+        // modelNames = [...modelNames, ...modelBids];
+
+        return modelBids;
+      })
+    );
+    const flatArray = bidModelsName.flat();
+
+    const otherData = flatArray.filter((item) => item.userName !== userName);
+
+    const allData = [...otherData, ...myAuction];
+    //now order the data according the name and biding
+    //again with map
+
+    const nameSorted = {};
+
+    allData.map((item) => {
+      if (!nameSorted[item.name]) {
+        nameSorted[item.name] = [];
+      }
+      nameSorted[item.name].push(item);
+      return nameSorted;
+    });
+
+    for (const modelName in nameSorted) {
+      nameSorted[modelName].sort((a, b) => b.bid - a.bid);
+    }
+
+    const data = Object.values(nameSorted).flat();
+    res.render("auction", { data, message: undefined });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { ItemByName, allAuction, getMyAuction };

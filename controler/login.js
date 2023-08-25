@@ -25,8 +25,10 @@ const loginUser = async (req, res) => {
         message: "enter valid username and password",
       });
     const foundUser = await userDb.findOne({ userName: user }).exec();
-    if (!foundUser) return res.sendStatus(404); //unathorized
-
+    if (!foundUser)
+      return res.render("logger", {
+        message: "enter valid username and password",
+      });
     const match = await bcrypt.compare(pwd, foundUser.password);
 
     if (match) {
