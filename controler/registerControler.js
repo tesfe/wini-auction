@@ -2,20 +2,30 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userDb = require("../model/user");
 const path = require("path");
-const { userValidator } = require("../validators/userValidator");
+const { registerValidator } = require("../validators/userValidator");
 
 const handleNewuser = async (req, res) => {
-  const { user, pwd } = req.body;
+  const { user, firstName, lastName, pwd, email, adress, phone } = req.body;
   //i am only destructuring to get these values to simplify coding volume
+  console.log(req.body);
   if (!user || !pwd) {
     return res
       .status(400)
       .render("logger", { message: "enter a valid password and user name" });
   }
-  const { error } = userValidator({ user, pwd });
+  const { error } = registerValidator({
+    user,
+    pwd,
+    firstName,
+    lastName,
+    email,
+    phone,
+    adress,
+  });
+  console.log(error);
   if (error)
     return res.render("logger", {
-      message: "enter valid username and password",
+      message: "fill in  all required inputs ",
     });
   // const dublicate = userDB.users.find((person) => person.userName === user);
   const dublicate = await userDb.findOne({ userName: user }).exec();
@@ -30,6 +40,11 @@ const handleNewuser = async (req, res) => {
     const newUser = await userDb.create({
       userName: user,
       password: hashedPwd,
+      adress,
+      phone,
+      email,
+      firstName,
+      lastName,
     });
     console.log("newUser is created");
     console.log(newUser);

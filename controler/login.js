@@ -22,15 +22,15 @@ const loginUser = async (req, res) => {
     const { error } = userValidator({ user, pwd });
     if (error)
       return res.render("logger", {
-        message: "enter valid username and password",
+        message: "enter valid username or password",
       });
     const foundUser = await userDb.findOne({ userName: user }).exec();
     if (!foundUser)
       return res.render("logger", {
-        message: "enter valid username and password",
+        message: "enter valid username and/or password",
       });
     const match = await bcrypt.compare(pwd, foundUser.password);
-
+    console.log(match);
     if (match) {
       const accessToken = jwt.sign(
         { userName: foundUser.userName },
@@ -60,7 +60,7 @@ const loginUser = async (req, res) => {
       res.redirect("/products");
     } else
       res.render("logger", {
-        message: "enter valid username and password",
+        message: "enter valid username and/ password",
       });
   } catch (error) {
     console.log(error);

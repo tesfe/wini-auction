@@ -159,6 +159,7 @@ price.addEventListener("change", (evt) => {
   const val = evt.target.value;
   console.log(JSON.stringify(val));
   menu.price = val;
+  rangeValue.style.color = "black";
   rangeValue.textContent = "$" + val;
   item.innerHTML = "";
   console.log(JSON.stringify(menu));

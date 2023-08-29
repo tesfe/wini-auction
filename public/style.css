@@ -197,3 +197,12 @@ h6 {
   border-radius: 5px;
   font-size: small;
 }
+/* setting page style */
+.setting {
+  margin-top: 9rem;
+}
+.setting-index a {
+  font-size: 800;
+  padding: 0.5rem;
+  color: black;
+}

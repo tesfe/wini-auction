@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <form action="/products" mrthod="get">
+                <button
+                  class="nav-link active"
+                  aria-current="page"
+                  type="submit">
+                  Home
+                </button>
+              </form>
+            </li>
+            <li class="nav-item">
+              <form action="/auctionItem" method="get">
+                <button class="nav-link" type="submit">All Auctions</button>
+              </form>
+            </li>
+            <li class="nav-item">
+              <form action="/myauction" method="get">
+                <button class="nav-link" type="submit">My Auction</button>
+              </form>
+            </li>
+            <li class="nav-item">
+              <form action="/logout" method="get">
+                <button class="nav-link" type="submit">logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 class="header-bg-color w-100 text-center pt-3">WINI AUCTION</h1>
+    <div class="row mx-auto setting">
+      <h2>Account Setting</h2>
+      <hr class="z-n1" />
+      <div
+        class="col-lg-2 border-end border-black border-2 auction-items setting-index">
+        <ul>
+          <li><a href="#profile">Profile Info </a></li>
+          <li><a href="#ch-pwd">change Password</a></li>
+          <li><a href="#">Delete Account</a></li>
+        </ul>
+      </div>
+      <div id="profile" class="col-lg-7 pb-5 yellow">
+        <form action="/setting" method="post">
+          <h4>Profile</h4>
+          <div class="m-1">
+            User Name:
+            <span class="text-primary fw-bold"> <%=data.userName%></span>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="userName"
+              value="<%=data.userName%>" />
+          </div>
+
+          <h4>personal informatio</h4>
+          <div class="m-1">
+            First Name: <%=data.firstName%>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="firstName"
+              value="<%=data.firstName%>" />
+          </div>
+          <div class="m-1">
+            Last Name: <%=data.lastName%>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="lastName"
+              value="<%=data.lastName%>" />
+          </div>
+          <h4>Contact information</h4>
+          <div class="m-1">
+            Email: <%=data.email%>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="email"
+              value="<%=data.email%>" />
+          </div>
+          <div class="m-1">
+            Phone number: <%=data.phone%>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="phone"
+              value="<%=data.phone%>" />
+          </div>
+          <div class="m-1">
+            adress: <%=data.adress%>
+            <button class="border-0 fst-italic" type="button">Edit</button>
+            <input
+              class="rounded-2 d-none edit-btn"
+              type="text"
+              name="adress"
+              value="<%=data.adress%>" />
+          </div>
+          <div class="m-1">
+            Enter password
+            <input class="rounded-2" type="password" name="password" required />
+          </div>
+          <div class="ms-5 ps-5 justify-content-end">
+            <button
+              class="rounded-2 ms-5 bg-primary border-0 mt-1"
+              type="submit">
+              save changes
+            </button>
+          </div>
+        </form>
+        <hr />
+        <div id="ch-pwd">
+          <h3>Change Password</h3>
+          <hr />
+          <form action="/editPassword" method="post">
+            <div>
+              <label>
+                Old Password:
+                <input class="rounded-2" type="password" name="password"
+              /></label>
+              <label>
+                New Password:
+                <input class="rounded-2" type="password" name="newPassword"
+              /></label>
+              <button class="border-0" type="submit">change</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <% if (message) { %>
+      <p><%=message %></p>
+
+      <% } %>
+    </div>
+    <script src="/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
