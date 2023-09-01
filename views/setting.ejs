@@ -14,7 +14,7 @@
   <body>
     <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">WINI</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -25,7 +25,9 @@
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <form action="/products" mrthod="get">
@@ -48,103 +50,154 @@
               </form>
             </li>
             <li class="nav-item">
-              <form action="/logout" method="get">
-                <button class="nav-link" type="submit">logout</button>
-              </form>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Account
+                </button>
+                <ul class="dropdown-menu bg-dark-subtle">
+                  <li class="border-bottom border-top">
+                    <form action="/setting" method="get">
+                      <button class="dropdown-item" type="submit">
+                        Settings
+                      </button>
+                    </form>
+                  </li>
+                  <li class="border-bottom">
+                    <form action="/logout" method="get">
+                      <button class="dropdown-item" type="submit">
+                        logout
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <h1 class="header-bg-color w-100 text-center pt-3">WINI AUCTION</h1>
-    <div class="row mx-auto setting">
+    <div class="row mx-2 setting">
       <h2>Account Setting</h2>
       <hr class="z-n1" />
       <div
         class="col-lg-2 border-end border-black border-2 auction-items setting-index">
         <ul>
-          <li><a href="#profile">Profile Info </a></li>
-          <li><a href="#ch-pwd">change Password</a></li>
-          <li><a href="#">Delete Account</a></li>
+          <li><a class="profile" href="#profile">Profile Info </a></li>
+          <li><a class="change-pwd" href="#change-pwd">change Password</a></li>
+          <li>
+            <a class="delete-account" href="#delete-account">Delete Account</a>
+          </li>
         </ul>
       </div>
-      <div id="profile" class="col-lg-7 pb-5 yellow">
-        <form action="/setting" method="post">
-          <h4>Profile</h4>
-          <div class="m-1">
-            User Name:
-            <span class="text-primary fw-bold"> <%=data.userName%></span>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="userName"
-              value="<%=data.userName%>" />
-          </div>
 
-          <h4>personal informatio</h4>
-          <div class="m-1">
-            First Name: <%=data.firstName%>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="firstName"
-              value="<%=data.firstName%>" />
-          </div>
-          <div class="m-1">
-            Last Name: <%=data.lastName%>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="lastName"
-              value="<%=data.lastName%>" />
-          </div>
-          <h4>Contact information</h4>
-          <div class="m-1">
-            Email: <%=data.email%>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="email"
-              value="<%=data.email%>" />
-          </div>
-          <div class="m-1">
-            Phone number: <%=data.phone%>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="phone"
-              value="<%=data.phone%>" />
-          </div>
-          <div class="m-1">
-            adress: <%=data.adress%>
-            <button class="border-0 fst-italic" type="button">Edit</button>
-            <input
-              class="rounded-2 d-none edit-btn"
-              type="text"
-              name="adress"
-              value="<%=data.adress%>" />
-          </div>
-          <div class="m-1">
-            Enter password
-            <input class="rounded-2" type="password" name="password" required />
-          </div>
-          <div class="ms-5 ps-5 justify-content-end">
-            <button
-              class="rounded-2 ms-5 bg-primary border-0 mt-1"
-              type="submit">
-              save changes
-            </button>
-          </div>
-        </form>
-        <hr />
-        <div id="ch-pwd">
+      <div class="col-lg-7 pb-5 yellow">
+        <% if (message) { %>
+        <h5><%=message %></h5>
+        <% } %>
+        <div id="profile">
+          <form action="/setting" method="post">
+            <h4>Profile</h4>
+            <div class="m-1">
+              User Name:
+              <span class="text-primary fw-bold"> <%=data.userName%></span>
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="userName"
+                value="<%=data.userName%>" />
+            </div>
+
+            <h4>personal informatio</h4>
+            <div class="m-1">
+              First Name:
+              <span class="text-primary fw-bold"> <%=data.firstName%></span>
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="firstName"
+                value="<%=data.firstName%>" />
+            </div>
+            <div class="m-1">
+              Last Name:<span class="text-primary fw-bold">
+                <%=data.lastName%></span
+              >
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="lastName"
+                value="<%=data.lastName%>" />
+            </div>
+            <h4>Contact information</h4>
+            <div class="m-1">
+              Email: <span class="text-primary fw-bold"> <%=data.email%> </span>
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="email"
+                value="<%=data.email%>" />
+            </div>
+            <div class="m-1">
+              Phone number:
+              <span class="text-primary fw-bold"> <%=data.phone%> </span>
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="phone"
+                value="<%=data.phone%>" />
+            </div>
+            <div class="m-1">
+              adress:
+              <span class="text-primary fw-bold"> <%=data.adress%> </span>
+              <button class="border-0 fst-italic edit-btn" type="button">
+                Edit
+              </button>
+              <input
+                class="rounded-2 d-none"
+                type="text"
+                name="adress"
+                value="<%=data.adress%>" />
+            </div>
+            <div class="m-1">
+              Enter password
+              <input
+                class="rounded-2"
+                type="password"
+                name="password"
+                required />
+            </div>
+            <div class="save-btn">
+              <button
+                class="rounded-2 ms-5 bg-primary border-0 mt-1"
+                type="submit">
+                save changes
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="change-pwd" class="d-none">
           <h3>Change Password</h3>
-          <hr />
+
           <form action="/editPassword" method="post">
             <div>
               <label>
@@ -155,17 +208,24 @@
                 New Password:
                 <input class="rounded-2" type="password" name="newPassword"
               /></label>
-              <button class="border-0" type="submit">change</button>
+              <button class="border-0 bg-primary" type="submit">change</button>
             </div>
           </form>
         </div>
-      </div>
-      <% if (message) { %>
-      <p><%=message %></p>
 
-      <% } %>
+        <div id="delete-account" class="d-none">
+          <h3>Delete Account</h3>
+          <form action="/deleteAccount" method="post">
+            <label>
+              Enter Password:
+              <input class="rounded-2" type="password" name="password"
+            /></label>
+            <button class="border-0 bg-primary" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <script src="/script.js"></script>
+    <script src="settingScript.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

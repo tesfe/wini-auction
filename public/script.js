@@ -1,5 +1,3 @@
-//script for products page
-
 const fetchBtn = document.querySelectorAll(".category");
 const price = document.querySelector("#prices");
 const company = document.querySelectorAll(".company");
@@ -11,6 +9,9 @@ const searchBtn = document.querySelector(".search-btn");
 
 const bid = document.querySelector("#bid");
 const submit = document.querySelector("#submit");
+//--------------------------------------------------------//
+
+//this for main page
 const key = "products";
 
 const colorsArray = Array.from(colors);
@@ -21,6 +22,7 @@ menu.category = "all";
 menu.company = "all";
 menu.color = "all";
 menu.price = price.value;
+
 searchBtn.addEventListener("click", async (evt) => {
   evt.preventDefault();
   try {
@@ -122,7 +124,7 @@ categoryArray.forEach((button) => {
     //button.style.backgroundColor = "white";
 
     const val = evt.target.value;
-    console.log(JSON.stringify(val));
+
     menu.category = val;
     // val = "";
     item.innerHTML = "";
@@ -134,11 +136,11 @@ companyArray.forEach((button) => {
     // evt.preventDefault();
 
     const val = evt.target.value;
-    console.log(JSON.stringify(val));
+
     menu.company = val;
     item.innerHTML = "";
     // val = "";
-    console.log(JSON.stringify(menu.company));
+
     options();
   });
 });
@@ -146,23 +148,26 @@ colorsArray.forEach((button) => {
   button.addEventListener("click", (evt) => {
     // evt.preventDefault();
     const val = evt.target.value;
-    console.log(JSON.stringify(val));
+
     menu.color = val;
     // val = "";
     item.innerHTML = "";
-    console.log(JSON.stringify(menu.color));
+
     options();
   });
 });
 
 price.addEventListener("change", (evt) => {
   const val = evt.target.value;
-  console.log(JSON.stringify(val));
+
   menu.price = val;
-  rangeValue.style.color = "black";
-  rangeValue.textContent = "$" + val;
+  const priceValue = evt.target.nextElementSibling;
+  // rangeValue.style.color = "black";
+  // rangeValue.textContent = "$" + val;
+  priceValue.style.color = "black";
+  priceValue.textContent = "$" + val;
   item.innerHTML = "";
-  console.log(JSON.stringify(menu));
+
   options();
 });
 
@@ -193,15 +198,18 @@ const options = async () => {
       //storage = "";
     }
 
-    data.forEach(createItem);
+    data?.forEach(createItem);
   } catch (error) {
     console.log({ message: "failed to retrieve" });
   }
 };
 document.addEventListener("DOMContentLoaded", () => {
   const storageSession = JSON.parse(sessionStorage.getItem(key));
-  console.log(storageSession);
-  storageSession.forEach(createItem);
+
+  storageSession?.forEach(createItem);
+  if (!storageSession) {
+    options();
+  }
 });
 
 // try {
@@ -216,3 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // } catch (err) {
 //   console.log("failed to retrieve search value");
 // }
+//script for products main page
+
+// -----------------------------------------------//

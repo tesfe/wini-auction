@@ -16,6 +16,8 @@
     <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">WINI</a>
+        <div class="text-primary justify-content-start"><%=user%></div>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -26,7 +28,9 @@
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <form action="/products" mrthod="get">
@@ -48,11 +52,8 @@
                 <button class="nav-link" type="submit">My Auction</button>
               </form>
             </li>
-            <li class="nav-item">
-              <form action="/logout" method="get">
-                <button class="nav-link" type="submit">logout</button>
-              </form>
-            </li>
+            <li class="nav-item"></li>
+
             <li class="nav-item">
               <div class="btn-group">
                 <button
@@ -62,11 +63,18 @@
                   aria-expanded="false">
                   Account
                 </button>
-                <ul class="dropdown-menu">
-                  <li>
+                <ul class="dropdown-menu bg-dark-subtle">
+                  <li class="border-bottom border-top">
                     <form action="/setting" method="get">
                       <button class="dropdown-item" type="submit">
                         Settings
+                      </button>
+                    </form>
+                  </li>
+                  <li class="border-bottom">
+                    <form action="/logout" method="get">
+                      <button class="dropdown-item" type="submit">
+                        logout
                       </button>
                     </form>
                   </li>
@@ -197,17 +205,16 @@
         </button>
         <ul class="dropdown-menu">
           <li>
-            <label for="prices" class="col-12 rangeValue p-1"> </label>
-          </li>
-          <li>
-            <input
+            <!-- <input
               class="dropdown-item p-1"
               type="range"
               id="prices"
               min="100"
               max="100000"
               value="100000" />
+            <label for="prices" class="col-12 rangeValue p-1"> </label> -->
           </li>
+          <li></li>
         </ul>
       </div>
     </div>
@@ -276,8 +283,9 @@
           value="black"
           class="rounded-circle p-2 border-0 black colors"></button>
         <label for="prices" class="fw-bold col-12">prices</label>
-        <label for="prices" class="col-12 rangeValue"> </label>
+
         <input type="range" id="prices" min="100" max="100000" value="100000" />
+        <label for="prices" class="col-12 rangeValue"> </label>
       </section>
       <div class="row justify-content-end pt-5 mt-5 w-100">
         <section

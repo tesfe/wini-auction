@@ -76,13 +76,15 @@ const editProfile = async (req, res) => {
 
     const updated = await userDb.findOne({ userName }).exec();
     console.log(updated);
-    if (updated) {
+    try {
       const { userName, firstName, lastName, email, phone, adress } = updated;
       const data = { userName, firstName, lastName, email, phone, adress };
       return res.render("setting", {
         data,
         message: undefined,
       });
+    } catch (error) {
+      console.log(error);
     }
   } catch (error) {
     console.log(error);
