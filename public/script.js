@@ -204,11 +204,15 @@ const options = async () => {
   }
 };
 document.addEventListener("DOMContentLoaded", () => {
-  const storageSession = JSON.parse(sessionStorage.getItem(key));
+  try {
+    const storageSession = JSON.parse(sessionStorage.getItem(key));
 
-  storageSession?.forEach(createItem);
-  if (!storageSession) {
-    options();
+    storageSession?.forEach(createItem);
+    if (!storageSession) {
+      options();
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 

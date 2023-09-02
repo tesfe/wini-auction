@@ -96,15 +96,17 @@
       </div>
 
       <div class="col-lg-7 pb-5 yellow">
-        <% if (message) { %>
+        <% if (message) { %> <% if (message.success) { %>
+        <h6><%=message.success %></h6>
+        <% } else { %>
         <h5><%=message %></h5>
-        <% } %>
+        <% } %> <% } %>
         <div id="profile">
           <form action="/setting" method="post">
             <h4>Profile</h4>
             <div class="m-1">
               User Name:
-              <span class="text-primary fw-bold"> <%=data.userName%></span>
+              <span class="text-primary fw-bold"> <%=data?.userName%></span>
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
               </button>
@@ -112,13 +114,13 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="userName"
-                value="<%=data.userName%>" />
+                value="<%=data?.userName%>" />
             </div>
 
             <h4>personal informatio</h4>
             <div class="m-1">
               First Name:
-              <span class="text-primary fw-bold"> <%=data.firstName%></span>
+              <span class="text-primary fw-bold"> <%=data?.firstName%></span>
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
               </button>
@@ -126,11 +128,11 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="firstName"
-                value="<%=data.firstName%>" />
+                value="<%=data?.firstName%>" />
             </div>
             <div class="m-1">
               Last Name:<span class="text-primary fw-bold">
-                <%=data.lastName%></span
+                <%=data?.lastName%></span
               >
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
@@ -139,11 +141,12 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="lastName"
-                value="<%=data.lastName%>" />
+                value="<%=data?.lastName%>" />
             </div>
             <h4>Contact information</h4>
             <div class="m-1">
-              Email: <span class="text-primary fw-bold"> <%=data.email%> </span>
+              Email:
+              <span class="text-primary fw-bold"> <%=data?.email%> </span>
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
               </button>
@@ -151,11 +154,11 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="email"
-                value="<%=data.email%>" />
+                value="<%=data?.email%>" />
             </div>
             <div class="m-1">
               Phone number:
-              <span class="text-primary fw-bold"> <%=data.phone%> </span>
+              <span class="text-primary fw-bold"> <%=data?.phone%> </span>
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
               </button>
@@ -163,11 +166,11 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="phone"
-                value="<%=data.phone%>" />
+                value="<%=data?.phone%>" />
             </div>
             <div class="m-1">
               adress:
-              <span class="text-primary fw-bold"> <%=data.adress%> </span>
+              <span class="text-primary fw-bold"> <%=data?.adress%> </span>
               <button class="border-0 fst-italic edit-btn" type="button">
                 Edit
               </button>
@@ -175,7 +178,7 @@
                 class="rounded-2 d-none"
                 type="text"
                 name="adress"
-                value="<%=data.adress%>" />
+                value="<%=data?.adress%>" />
             </div>
             <div class="m-1">
               Enter password
@@ -198,7 +201,7 @@
         <div id="change-pwd" class="d-none">
           <h3>Change Password</h3>
 
-          <form action="/editPassword" method="post">
+          <form action="/changePwd" method="post">
             <div>
               <label>
                 Old Password:

@@ -34,9 +34,7 @@ const allAuction = async (req, res) => {
     });
     //console.log(itemByName, "this  data");
     for (const auc in itemByName) {
-      itemByName[auc].sort((a, b) => {
-        a.bid - b.bid;
-      });
+      itemByName[auc].sort((a, b) => b.bid - a.bid);
     }
 
     const data = Object.values(itemByName).flat();
@@ -64,9 +62,7 @@ const ItemByName = async (req, res) => {
     }
     //console.log(itemByName, "this  data");
 
-    const data = auctionItems.sort((a, b) => {
-      a.bid - b.bid;
-    });
+    const data = auctionItems.sort((a, b) => a.bid - b.bid);
 
     //console.log(data);
     res.render("auction", { data, message: undefined });

@@ -1,6 +1,6 @@
 require("dotenv").config();
 const userDb = require("../model/user");
-
+const auctionDb = require("../model/auction");
 const { registerValidator } = require("../validators/userValidator");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -91,4 +91,70 @@ const editProfile = async (req, res) => {
   }
 };
 
-module.exports = { setting, editProfile };
+const changePwd = async (req, res) => {
+  try {
+    const { newPassword, password } = req.body;
+    if (!newPassword || !password)
+      return res.render("setting", {
+        data: undefined,
+        message: "please enter your old password and new password",
+      });
+    const user = req.user;
+    const userAccount = await userDb.findOne({ userName: user }).exec();
+    const { userName, firstName, lastName, email, phone, adress } = userAccount;
+    const data = { userName, firstName, lastName, email, phone, adress };
+
+    const match = await bcrypt.compare(password, userAccount.password);
+    if (!match)
+      return res.render("setting", {
+        data,
+        message: "please enter your valid old password",
+      });
+    //if match exist so then we can change the password ,first hash it then update
+    const hashedPwd = await bcrypt.hash(newPassword, 10);
+    await userDb.updateOne(
+      { userName: user },
+      { $set: { password: hashedPwd } }
+    );
+    res.render("setting", {
+      data,
+      message: {
+        success: "you have successfully changed changed your password",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteAccount = async (req, res) => {
+  try {
+    const { password } = req.body;
+    if (!password)
+      return res.render("setting", {
+        data: undefined,
+        message: "please enter your valid password",
+      });
+    const user = req.user;
+    const accountUser = await userDb.findOne({ userName: user });
+    console.log(accountUser);
+    const { userName, firstName, lastName, email, phone, adress } = accountUser;
+    const data = { userName, firstName, lastName, email, phone, adress };
+    const match = await bcrypt.compare(password, accountUser.password);
+
+    if (!match)
+      return res.render("setting", {
+        data,
+        message: "please enter your valid password",
+      });
+
+    await auctionDb.deleteMany({ userName }).exec();
+
+    await userDb.deleteOne({ userName });
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { setting, editProfile, changePwd, deleteAccount };
