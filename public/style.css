@@ -158,6 +158,14 @@ body {
 .colors:active {
   background-color: rgba(207, 94, 7, 0.526);
 }
+.account-name:hover,
+.account-name:focus {
+  background-color: rgba(218, 165, 32, 0.431);
+  color: rgb(15, 2, 62);
+  border: 2px solid #434343;
+  border-radius: 13px;
+}
+
 .auction-page {
   margin-top: 10rem;
 }

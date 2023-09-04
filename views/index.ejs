@@ -16,8 +16,28 @@
     <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">WINI</a>
-        <div class="text-primary justify-content-start"><%=user%></div>
 
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn dropdown-toggle text-primary account-name"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%=user%>
+          </button>
+          <ul class="dropdown-menu bg-dark-subtle">
+            <li class="border-bottom border-top">
+              <form action="/setting" method="get">
+                <button class="dropdown-item" type="submit">Settings</button>
+              </form>
+            </li>
+            <li class="border-bottom">
+              <form action="/logout" method="get">
+                <button class="dropdown-item" type="submit">logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -54,33 +74,7 @@
             </li>
             <li class="nav-item"></li>
 
-            <li class="nav-item">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Account
-                </button>
-                <ul class="dropdown-menu bg-dark-subtle">
-                  <li class="border-bottom border-top">
-                    <form action="/setting" method="get">
-                      <button class="dropdown-item" type="submit">
-                        Settings
-                      </button>
-                    </form>
-                  </li>
-                  <li class="border-bottom">
-                    <form action="/logout" method="get">
-                      <button class="dropdown-item" type="submit">
-                        logout
-                      </button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            <li class="nav-item"></li>
           </ul>
         </div>
       </div>
