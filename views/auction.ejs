@@ -15,6 +15,27 @@
     <nav class="navi-bar navbar navbar-expand-lg bg-body-tertiary z-2">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">WINI</a>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn dropdown-toggle text-primary text-uppercase account-name"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%=userName%>
+          </button>
+          <ul class="dropdown-menu bg-dark-subtle">
+            <li class="border-bottom border-top">
+              <form action="/setting" method="get">
+                <button class="dropdown-item" type="submit">Settings</button>
+              </form>
+            </li>
+            <li class="border-bottom">
+              <form action="/logout" method="get">
+                <button class="dropdown-item" type="submit">logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -30,7 +51,7 @@
           id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <form action="/products" mrthod="get">
+              <form action="/products" method="get">
                 <button
                   class="nav-link active"
                   aria-current="page"
@@ -50,31 +71,11 @@
               </form>
             </li>
             <li class="nav-item">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Account
-                </button>
-                <ul class="dropdown-menu bg-dark-subtle">
-                  <li class="border-bottom border-top">
-                    <form action="/setting" method="get">
-                      <button class="dropdown-item" type="submit">
-                        Settings
-                      </button>
-                    </form>
-                  </li>
-                  <li class="border-bottom">
-                    <form action="/logout" method="get">
-                      <button class="dropdown-item" type="submit">
-                        logout
-                      </button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
+              <a
+                class="text-decoration-none text-black me-4 d-inline-block pt-2"
+                href="./aboutUs/index.html"
+                >About Us</a
+              >
             </li>
           </ul>
         </div>
@@ -83,7 +84,7 @@
     <h1 class="header-bg-color w-100 text-center pt-3">WINI AUCTION</h1>
     <main class="auction-page">
       <% if (message) { %>
-      <p class="text-danger-emphasis"><%=message%></p>
+      <h5 class="text-danger-emphasis"><%=message%></h5>
       <% } %> <% if (data) { %>
       <div class="row m-2">
         <% for( const item of data ) { %>

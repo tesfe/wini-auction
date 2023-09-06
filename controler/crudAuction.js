@@ -72,18 +72,21 @@ const mongoose = require("mongoose");
 const creatAuction = async (req, res) => {
   const { model, userName, bid } = req?.body;
   console.log(model);
+  const user = req.user;
   try {
     if (!userName || !bid || !model)
       return res.render("auction", {
         data: undefined,
         message: "enter valid username and your bid call",
+        userName: user,
       });
-    const user = req.user;
+
     //check if user is the loggin user
     if (user !== userName)
       return res.render("auction", {
         data: undefined,
         message: "enter valid username and your bid call",
+        userName: user,
       });
     const auciontItem = await auctionData.find({ name: model }).exec();
 
@@ -116,7 +119,7 @@ const creatAuction = async (req, res) => {
       a.bid - b.bid;
     });
 
-    res.render("auction", { data, message: undefined });
+    res.render("auction", { data, message: undefined, userName: user });
   } catch (error) {
     console.log(error);
   }
@@ -130,17 +133,19 @@ const deletUpdate = async (req, res) => {
     update = undefined,
     delet = undefined,
   } = req?.body;
+  const loggedUser = req?.user;
   if (!userName || !model)
     return res.render("auction", {
       data: undefined,
       message: "enter valid username and your bid call",
+      userName: loggedUser,
     });
 
-  const loggedUser = req?.user;
   if (userName !== loggedUser)
     return res.render("auction", {
       data: undefined,
       message: "unauthorized action",
+      userName: loggedUser,
     });
   console.log(update, delet);
   if (delet) {
@@ -155,17 +160,22 @@ const deletUpdate = async (req, res) => {
       });
 
       // return res.render("auction", { data, message: undefined });
-      return res.render("auction", { data, message: undefined });
+      return res.render("auction", {
+        data,
+        message: undefined,
+        userName: loggedUser,
+      });
     } catch (error) {
       console.log(error);
     }
   }
 
   if (update) {
-    if (!userName || !bid || !model)
+    if (!userName || !bid)
       return res.render("auction", {
         data: undefined,
         message: "enter valid username and your bid call",
+        userName: loggedUser,
       });
     try {
       await auctionData
@@ -189,7 +199,7 @@ const deletUpdate = async (req, res) => {
         a.bid - b.bid;
       });
 
-      res.render("auction", { data, message: undefined });
+      res.render("auction", { data, message: undefined, userName: loggedUser });
     } catch (error) {
       console.log(error);
     }

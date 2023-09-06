@@ -39,7 +39,7 @@ const allAuction = async (req, res) => {
 
     const data = Object.values(itemByName).flat();
     //console.log(data);
-    res.render("auction", { data, message: undefined });
+    res.render("auction", { data, message: undefined, userName });
   } catch (error) {
     console.log({ error });
   }
@@ -65,7 +65,7 @@ const ItemByName = async (req, res) => {
     const data = auctionItems.sort((a, b) => a.bid - b.bid);
 
     //console.log(data);
-    res.render("auction", { data, message: undefined });
+    res.render("auction", { data, message: undefined, userName });
   } catch (error) {
     console.log(error);
   }
@@ -78,6 +78,7 @@ const getMyAuction = async (req, res) => {
       return res.render("auction", {
         data: undefined,
         message: "No current bids found",
+        userName,
       });
     myAuction.forEach((item) => {
       item.user = true;
@@ -116,7 +117,7 @@ const getMyAuction = async (req, res) => {
     }
 
     const data = Object.values(nameSorted).flat();
-    res.render("auction", { data, message: undefined });
+    res.render("auction", { data, message: undefined, userName });
   } catch (error) {
     console.log(error);
   }
